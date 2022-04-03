@@ -5,8 +5,8 @@ jobs:
       - image: node:10
     steps:
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: "Build Stage"
+          command: "docker build -t someimage -f Dockerfile.dev ."
 workflows:
   say-hello-workflow:
     jobs:
