@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
-  build:
+  say-hello:
     docker:
-      - image: node:10
+      - image: cimg/base:stable
     steps:
       - run:
           name: "Build Stage"
