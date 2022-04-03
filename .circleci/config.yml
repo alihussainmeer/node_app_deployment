@@ -5,6 +5,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 19.03.13
       - run:
           name: "test docker version"
           command: "docker -v"
