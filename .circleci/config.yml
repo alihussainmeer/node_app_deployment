@@ -6,7 +6,11 @@ jobs:
     steps:
       - run:
           name: "test docker version"
+          command: "docker some"
+      - run:
+          name: "when  on fail"
           command: "docker -v"
+          when: on_fail
   build:
     docker:
       - image: cimg/base:stable
