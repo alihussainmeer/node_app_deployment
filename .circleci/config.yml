@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  aws-elastic-beanstalk: circleci/aws-elastic-beanstalk@2.0.1
 jobs:
   test:
     docker:
@@ -28,4 +30,11 @@ workflows:
           filters:
             branches:
               only: main
-
+      - aws-elastic-beanstalk/deploy:
+            application-name: node_app_deployment 
+            environment-name: Nodeappdeployment-env
+            requires:
+            - test
+            filters:
+              branches:
+                only: main
