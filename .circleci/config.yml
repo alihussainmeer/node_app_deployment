@@ -9,6 +9,9 @@ jobs:
           name: "test docker version"
           command: "docker -v"
       - run:
+          name: "Build prod"
+          command: "docker build -t someimage ."
+      - run:
           name: "Build Stage"
           command: "docker build -t someimage -f Dockerfile.dev ."
 
