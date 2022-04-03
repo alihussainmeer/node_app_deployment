@@ -1,6 +1,15 @@
 version: 2.1
 jobs:
+  test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: "test docker version"
+          command: "docker -v"
   build:
+    branches:
+      only: "main"
     docker:
       - image: cimg/base:stable
     steps:
@@ -8,16 +17,14 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
       - run:
-          name: "test docker version"
-          command: "docker -v"
-      - run:
-          name: "Build prod"
-          command: "docker build -t someimage ."
-      - run:
-          name: "Build Stage"
+          name: "Build DEV"
           command: "docker build -t someimage -f Dockerfile.dev ."
 
 workflows:
   say-hello-workflow:
     jobs:
-      - build
+      - test
+      - build:
+          requires:
+            - test
+
