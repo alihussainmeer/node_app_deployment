@@ -8,8 +8,6 @@ jobs:
           name: "test docker version"
           command: "docker -v"
   build:
-    branches:
-      only: "main"
     docker:
       - image: cimg/base:stable
     steps:
@@ -27,4 +25,7 @@ workflows:
       - build:
           requires:
             - test
+          filters:
+            branches:
+              only: main
 
