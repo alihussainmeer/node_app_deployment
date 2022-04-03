@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - checkout
       - run:
           name: "Build Stage"
           command: "docker build -t someimage -f Dockerfile.dev ."
